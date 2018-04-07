@@ -17,7 +17,6 @@ import com.stfalcon.chatkit.sample.utils.AppUtils;
 public class DefaultMessagesActivity extends DemoMessagesActivity
         implements MessageInput.InputListener,
         MessageInput.AttachmentsListener {
-
     public static void open(Context context) {
         context.startActivity(new Intent(context, DefaultMessagesActivity.class));
     }
