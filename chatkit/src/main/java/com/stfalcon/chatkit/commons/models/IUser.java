@@ -35,10 +35,12 @@ public interface IUser {
      * */
     String getName();
 
+    String getAvatar();
+
     /**
      * Returns the user's avatar image url
      *
      * @return the user's avatar image url
      * */
-    String getAvatar();
+//    String getAvatar()
 }

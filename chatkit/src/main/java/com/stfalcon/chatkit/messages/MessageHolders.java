@@ -763,16 +763,6 @@ public class MessageHolders {
                 time.setText(DateFormatter.format(message.getCreatedAt(), DateFormatter.Template.TIME));
             }
 
-            if (userAvatar != null) {
-                boolean isAvatarExists = imageLoader != null
-                        && message.getUser().getAvatar() != null
-                        && !message.getUser().getAvatar().isEmpty();
-
-                userAvatar.setVisibility(isAvatarExists ? View.VISIBLE : View.GONE);
-                if (isAvatarExists) {
-                    imageLoader.loadImage(userAvatar, message.getUser().getAvatar());
-                }
-            }
         }
 
         @Override
