@@ -58,7 +58,7 @@ public class BtLink implements Link
 	private BtTransport transport;
 	private boolean client;
 	public BluetoothSocket socket;
-	private BluetoothDevice device;
+	public BluetoothDevice device;
 
 	private long nodeId;
 

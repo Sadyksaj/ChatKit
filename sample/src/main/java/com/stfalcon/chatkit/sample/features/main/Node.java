@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.function.Consumer;
 
+import impl.underdark.transport.bluetooth.BtLink;
 import io.underdark.Underdark;
 import io.underdark.transport.Link;
 import io.underdark.transport.Transport;
@@ -25,10 +26,7 @@ public class Node implements TransportListener
     private Transport transport;
 
     private ArrayList<Link> links = new ArrayList<>();
-    private Map<Long, ArrayList<String>> storage = new HashMap<>();
-    private Map<Long, ArrayList<String>> newMessages = new HashMap<>();
-
-
+    private Map<Long, UserInfo> storage = new HashMap<>();
     public Node(MainActivity activity)
     {
         this.activity = activity;
@@ -43,7 +41,7 @@ public class Node implements TransportListener
 
 
 
-        EnumSet<TransportKind> kinds = EnumSet.of(TransportKind.BLUETOOTH, TransportKind.WIFI);
+        EnumSet<TransportKind> kinds = EnumSet.of(TransportKind.BLUETOOTH);
         //kinds = EnumSet.of(TransportKind.WIFI);
         //kinds = EnumSet.of(TransportKind.BLUETOOTH);
 
@@ -82,22 +80,17 @@ public class Node implements TransportListener
         return links;
     }
 
-    public int getFramesCount()
-    {
-        return framesCount;
-    }
 
     public void broadcastFrame(byte[] frameData)
     {
         if(links.isEmpty())
             return;
 
-        ++framesCount;
-        activity.refreshFrames();
-
         for(Link link : links)
             link.sendFrame(frameData);
     }
+
+    public UserInfo getUserInfo(){return null;}
 
     //region TransportListener
     @Override
@@ -130,9 +123,11 @@ public class Node implements TransportListener
     {
         String msg = new String(frameData);
         String[] payload = msg.split("~");
+        if (storage.get(link.getNodeId()) == null){
+            UserInfo user = new UserInfo(new ArrayList<String>(),((BtLink) link).getDevice().getName() , link.getNodeId());
+        }
         if (payload[payload.length - 1] == String.valueOf(nodeId)) {
-            newMessages.get(link.getNodeId()).add(msg.substring(0, msg.lastIndexOf("~")));
-            storage.get(link.getNodeId()).add(msg.substring(0, msg.lastIndexOf("~")));
+            storage.get(link.getNodeId()).messages.add(msg.substring(0, msg.lastIndexOf("~")));
         }
         activity.refreshFrames();
         // TODO: refresh chat

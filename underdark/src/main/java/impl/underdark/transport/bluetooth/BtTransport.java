@@ -80,7 +80,7 @@ public class BtTransport implements Transport, BtServer.Listener, BtPairer.Liste
 	private BroadcastReceiver receiver;
 
 	private BtServer server;
-	private List<BtLink> links = new ArrayList<>();
+	public List<BtLink> links = new ArrayList<>();
 
 	private DiscoveryManager manager;
 	private BtPairer pairer;
