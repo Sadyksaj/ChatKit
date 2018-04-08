@@ -42,7 +42,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:$supportVersion"
     compile "com.android.support:cardview-v7:$supportVersion"
     compile "com.android.support:design:$supportVersion"
-    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.6'
+    testCompile 'org.slf4j:slf4j-simple:1.7.6'
     //Picasso
     compile "com.squareup.picasso:picasso:$picassoVersion"
     //ImageViews

@@ -2,6 +2,11 @@ package com.stfalcon.chatkit.sample.features.main;
 
 
 
+import android.util.Log;
+
+import com.stfalcon.chatkit.sample.common.data.model.Dialog;
+import com.stfalcon.chatkit.sample.features.demo.def.DefaultDialogsActivity;
+
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -9,7 +14,9 @@ import java.util.Map;
 import java.util.Random;
 import java.util.function.Consumer;
 
+import impl.underdark.transport.aggregate.AggLink;
 import impl.underdark.transport.bluetooth.BtLink;
+import impl.underdark.transport.bluetooth.BtTransport;
 import io.underdark.Underdark;
 import io.underdark.transport.Link;
 import io.underdark.transport.Transport;
@@ -21,13 +28,13 @@ import io.underdark.util.nslogger.NSLoggerAdapter;
 public class Node implements TransportListener
 {
     private boolean running;
-    private MainActivity activity;
+    private DefaultDialogsActivity activity;
     private long nodeId;
     private Transport transport;
 
     private ArrayList<Link> links = new ArrayList<>();
     private Map<Long, UserInfo> storage = new HashMap<>();
-    public Node(MainActivity activity)
+    public Node(DefaultDialogsActivity activity)
     {
         this.activity = activity;
 
@@ -38,20 +45,12 @@ public class Node implements TransportListener
 
         if(nodeId < 0)
             nodeId = -nodeId;
-
-
-
-        EnumSet<TransportKind> kinds = EnumSet.of(TransportKind.BLUETOOTH);
-        //kinds = EnumSet.of(TransportKind.WIFI);
-        //kinds = EnumSet.of(TransportKind.BLUETOOTH);
-
-        this.transport = Underdark.configureTransport(
+        this.transport = new BtTransport(
                 234235,
                 nodeId,
                 this,
                 null,
-                activity.getApplicationContext(),
-                kinds
+                activity.getApplicationContext()
         );
     }
 
@@ -59,6 +58,7 @@ public class Node implements TransportListener
 
     public void start()
     {
+        Log.i("HI", "IM HERE");
         if(running)
             return;
 
@@ -103,7 +103,10 @@ public class Node implements TransportListener
     public void transportLinkConnected(Transport transport, Link link)
     {
         links.add(link);
-        activity.refreshPeers();
+        Log.i("There is node ",String.valueOf(link.getNodeId()));
+        System.out.println(link.getNodeId());
+        Dialog dialog = new Dialog(link.getNodeId(), ((BtLink) link).getDevice().getName());
+        activity.onNewDialog(dialog);
     }
 
     @Override

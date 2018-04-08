@@ -13,18 +13,18 @@ abstract class FixturesData {
 
     static ArrayList<String> avatars = new ArrayList<String>() {
         {
-            add("http://i.imgur.com/pv1tBmT.png");
-            add("http://i.imgur.com/R3Jm1CL.png");
-            add("http://i.imgur.com/ROz4Jgh.png");
+            add("http://www.onlygfx.com/wp-content/uploads/2017/07/circle-brush-stroke-1.png");
+            add("http://www.onlygfx.com/wp-content/uploads/2017/07/circle-brush-stroke-1.png");
+            add("http://www.onlygfx.com/wp-content/uploads/2017/07/circle-brush-stroke-1.png");
             add("http://i.imgur.com/Qn9UesZ.png");
         }
     };
 
     static final ArrayList<String> groupChatImages = new ArrayList<String>() {
         {
-            add("http://i.imgur.com/hRShCT3.png");
-            add("http://i.imgur.com/zgTUcL3.png");
-            add("http://i.imgur.com/mRqh5w1.png");
+            add("https://files.virgool.io/upload/users/1030/posts/vovgg7fh82in/qb1ygm8rsuxp.png");
+            add("https://files.virgool.io/upload/users/1030/posts/vovgg7fh82in/qb1ygm8rsuxp.png");
+            add("https://files.virgool.io/upload/users/1030/posts/vovgg7fh82in/qb1ygm8rsuxp.png");
         }
     };
 

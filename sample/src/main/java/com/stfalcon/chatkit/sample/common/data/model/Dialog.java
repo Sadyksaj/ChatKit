@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Dialog implements IDialog<Message> {
 
     private String id;
+    private long nodeID;
     private String dialogPhoto;
     private String dialogName;
     private ArrayList<User> users;
@@ -17,6 +18,10 @@ public class Dialog implements IDialog<Message> {
 
     private int unreadCount;
 
+    public Dialog(long id, String name){
+        this.nodeID = id;
+        this.dialogName =name;
+    }
     public Dialog(String id, String name, String photo,
                   ArrayList<User> users, Message lastMessage, int unreadCount) {
 

@@ -11,12 +11,17 @@ import com.stfalcon.chatkit.sample.common.data.fixtures.DialogsFixtures;
 import com.stfalcon.chatkit.sample.common.data.model.Dialog;
 import com.stfalcon.chatkit.sample.common.data.model.Message;
 import com.stfalcon.chatkit.sample.features.demo.DemoDialogsActivity;
+import com.stfalcon.chatkit.sample.features.main.Node;
 
 import java.util.ArrayList;
 
+import impl.underdark.transport.bluetooth.BtLink;
+import io.underdark.transport.Link;
+
 public class DefaultDialogsActivity extends DemoDialogsActivity {
 
-    private ArrayList<Dialog> dialogs;
+    private ArrayList<Dialog> dialogs = new ArrayList<>();
+    Node node;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, DefaultDialogsActivity.class));
@@ -28,7 +33,8 @@ public class DefaultDialogsActivity extends DemoDialogsActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default_dialogs);
-
+        node = new Node(this);
+        node.start();
         dialogsList = (DialogsList) findViewById(R.id.dialogsList);
         initAdapter();
     }
@@ -40,8 +46,8 @@ public class DefaultDialogsActivity extends DemoDialogsActivity {
 
     private void initAdapter() {
         super.dialogsAdapter = new DialogsListAdapter<>(super.imageLoader);
-        super.dialogsAdapter.setItems(DialogsFixtures.getDialogs());
-        super.setnode();
+        super.dialogsAdapter.setItems(dialogs);
+
         super.dialogsAdapter.setOnDialogClickListener(this);
         super.dialogsAdapter.setOnDialogLongClickListener(this);
 
@@ -57,7 +63,13 @@ public class DefaultDialogsActivity extends DemoDialogsActivity {
     }
 
     //for example
-    private void onNewDialog(Dialog dialog) {
+    public void onNewDialog(Dialog dialog) {
         dialogsAdapter.addItem(dialog);
+    }
+
+    public void refreshPeers() {
+    }
+
+    public void refreshFrames() {
     }
 }
