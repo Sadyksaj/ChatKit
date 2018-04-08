@@ -26,13 +26,7 @@ public class CustomDialogViewHolder
         if (dialog.getUsers().size() > 1) {
             onlineIndicator.setVisibility(View.GONE);
         } else {
-            boolean isOnline = dialog.getUsers().get(0).isOnline();
             onlineIndicator.setVisibility(View.VISIBLE);
-            if (isOnline) {
-                onlineIndicator.setBackgroundResource(R.drawable.shape_bubble_online);
-            } else {
-                onlineIndicator.setBackgroundResource(R.drawable.shape_bubble_offline);
-            }
         }
     }
 }

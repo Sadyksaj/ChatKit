@@ -47,7 +47,7 @@ public class StyledMessagesActivity extends DemoMessagesActivity
 
     @Override
     public void onAddAttachments() {
-        messagesAdapter.addToStart(MessagesFixtures.getImageMessage(), true);
+
     }
 
     @Override

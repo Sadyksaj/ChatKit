@@ -60,41 +60,17 @@ public class CustomMediaMessagesActivity extends DemoMessagesActivity
 
     @Override
     public boolean hasContentFor(Message message, byte type) {
-        switch (type) {
-            case CONTENT_TYPE_VOICE:
-                return message.getVoice() != null
-                        && message.getVoice().getUrl() != null
-                        && !message.getVoice().getUrl().isEmpty();
-        }
+
         return false;
     }
 
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {
-        switch (i) {
-            case 0:
-                messagesAdapter.addToStart(MessagesFixtures.getImageMessage(), true);
-                break;
-            case 1:
-                messagesAdapter.addToStart(MessagesFixtures.getVoiceMessage(), true);
-                break;
-        }
+
     }
 
     private void initAdapter() {
-        MessageHolders holders = new MessageHolders()
-                .registerContentType(
-                        CONTENT_TYPE_VOICE,
-                        IncomingVoiceMessageViewHolder.class,
-                        R.layout.item_custom_incoming_voice_message,
-                        OutcomingVoiceMessageViewHolder.class,
-                        R.layout.item_custom_outcoming_voice_message,
-                        this);
 
 
-        super.messagesAdapter = new MessagesListAdapter<>(super.senderId, holders, super.imageLoader);
-        super.messagesAdapter.enableSelectionMode(this);
-        super.messagesAdapter.setLoadMoreListener(this);
-        this.messagesList.setAdapter(super.messagesAdapter);
     }
 }

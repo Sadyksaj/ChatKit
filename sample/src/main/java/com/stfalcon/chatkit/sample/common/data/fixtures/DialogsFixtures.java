@@ -35,10 +35,8 @@ public final class DialogsFixtures extends FixturesData {
         return new Dialog(
                 getRandomId(),
                 users.size() > 1 ? groupChatTitles.get(users.size() - 2) : users.get(0).getName(),
-                users.size() > 1 ? groupChatImages.get(users.size() - 2) : getRandomAvatar(),
                 users,
-                getMessage(lastMessageCreatedAt),
-                i < 3 ? 3 - i : 0);
+                getMessage(lastMessageCreatedAt));
     }
 
     private static ArrayList<User> getUsers() {
@@ -55,9 +53,8 @@ public final class DialogsFixtures extends FixturesData {
     private static User getUser() {
         return new User(
                 getRandomId(),
-                getRandomName(),
-                getRandomAvatar(),
-                getRandomBoolean());
+                getRandomName());
+
     }
 
     private static Message getMessage(final Date date) {

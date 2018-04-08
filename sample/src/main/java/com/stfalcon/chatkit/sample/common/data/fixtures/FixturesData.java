@@ -11,23 +11,6 @@ abstract class FixturesData {
 
     static SecureRandom rnd = new SecureRandom();
 
-    static ArrayList<String> avatars = new ArrayList<String>() {
-        {
-            add("http://i.imgur.com/pv1tBmT.png");
-            add("http://i.imgur.com/R3Jm1CL.png");
-            add("http://i.imgur.com/ROz4Jgh.png");
-            add("http://i.imgur.com/Qn9UesZ.png");
-        }
-    };
-
-    static final ArrayList<String> groupChatImages = new ArrayList<String>() {
-        {
-            add("http://i.imgur.com/hRShCT3.png");
-            add("http://i.imgur.com/zgTUcL3.png");
-            add("http://i.imgur.com/mRqh5w1.png");
-        }
-    };
-
     static final ArrayList<String> groupChatTitles = new ArrayList<String>() {
         {
             add("Samuel, Michelle");
@@ -35,7 +18,6 @@ abstract class FixturesData {
             add("Julia, Angel, Kyle, Jordan");
         }
     };
-
     static final ArrayList<String> names = new ArrayList<String>() {
         {
             add("Samuel Reynolds");
@@ -68,27 +50,9 @@ abstract class FixturesData {
         }
     };
 
-    static final ArrayList<String> images = new ArrayList<String>() {
-        {
-            add("https://habrastorage.org/getpro/habr/post_images/e4b/067/b17/e4b067b17a3e414083f7420351db272b.jpg");
-            add("http://www.designboom.com/wp-content/uploads/2015/11/stefano-boeri-architetti-vertical-forest-residential-tower-lausanne-switzerland-designboom-01.jpg");
-        }
-    };
 
     static String getRandomId() {
         return Long.toString(UUID.randomUUID().getLeastSignificantBits());
-    }
-
-    static String getRandomAvatar() {
-        return avatars.get(rnd.nextInt(avatars.size()));
-    }
-
-    static String getRandomGroupChatImage() {
-        return groupChatImages.get(rnd.nextInt(groupChatImages.size()));
-    }
-
-    static String getRandomGroupChatTitle() {
-        return groupChatTitles.get(rnd.nextInt(groupChatTitles.size()));
     }
 
     static String getRandomName() {
@@ -97,13 +61,5 @@ abstract class FixturesData {
 
     static String getRandomMessage() {
         return messages.get(rnd.nextInt(messages.size()));
-    }
-
-    static String getRandomImage() {
-        return images.get(rnd.nextInt(images.size()));
-    }
-
-    static boolean getRandomBoolean() {
-        return rnd.nextBoolean();
     }
 }

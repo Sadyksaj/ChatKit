@@ -27,6 +27,7 @@ public class Node implements TransportListener
     private ArrayList<Link> links = new ArrayList<>();
     private Map<Long, ArrayList<String>> storage = new HashMap<>();
     private Map<Long, ArrayList<String>> newMessages = new HashMap<>();
+    private int framesCount;
 
 
     public Node(MainActivity activity)

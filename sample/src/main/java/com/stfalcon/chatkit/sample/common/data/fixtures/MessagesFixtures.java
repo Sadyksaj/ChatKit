@@ -15,17 +15,6 @@ public final class MessagesFixtures extends FixturesData {
         throw new AssertionError();
     }
 
-    public static Message getImageMessage() {
-        Message message = new Message(getRandomId(), getUser(), null);
-        message.setImage(new Message.Image(getRandomImage()));
-        return message;
-    }
-
-    public static Message getVoiceMessage() {
-        Message message = new Message(getRandomId(), getUser(), null);
-        message.setVoice(new Message.Voice("http://example.com", rnd.nextInt(200) + 30));
-        return message;
-    }
 
     public static Message getTextMessage() {
         return getTextMessage(getRandomMessage());
@@ -42,11 +31,7 @@ public final class MessagesFixtures extends FixturesData {
 
             for (int j = 0; j < countPerDay; j++) {
                 Message message;
-                if (i % 2 == 0 && j % 3 == 0) {
-                    message = getImageMessage();
-                } else {
-                    message = getTextMessage();
-                }
+                message = getTextMessage();
 
                 Calendar calendar = Calendar.getInstance();
                 if (startDate != null) calendar.setTime(startDate);
@@ -63,8 +48,6 @@ public final class MessagesFixtures extends FixturesData {
         boolean even = rnd.nextBoolean();
         return new User(
                 even ? "0" : "1",
-                even ? names.get(0) : names.get(1),
-                even ? avatars.get(0) : avatars.get(1),
-                true);
+                even ? names.get(0) : names.get(1));
     }
 }

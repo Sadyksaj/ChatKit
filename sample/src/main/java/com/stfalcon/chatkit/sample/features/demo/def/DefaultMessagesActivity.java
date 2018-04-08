@@ -23,6 +23,7 @@ public class DefaultMessagesActivity extends DemoMessagesActivity
 
     private MessagesList messagesList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,6 @@ public class DefaultMessagesActivity extends DemoMessagesActivity
 
         this.messagesList = (MessagesList) findViewById(R.id.messagesList);
         initAdapter();
-
         MessageInput input = (MessageInput) findViewById(R.id.input);
         input.setInputListener(this);
     }
@@ -44,8 +44,7 @@ public class DefaultMessagesActivity extends DemoMessagesActivity
 
     @Override
     public void onAddAttachments() {
-        super.messagesAdapter.addToStart(
-                MessagesFixtures.getImageMessage(), true);
+
     }
 
     private void initAdapter() {

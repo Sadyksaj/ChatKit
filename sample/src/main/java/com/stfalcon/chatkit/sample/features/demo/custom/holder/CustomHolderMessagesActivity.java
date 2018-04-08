@@ -50,11 +50,6 @@ public class CustomHolderMessagesActivity extends DemoMessagesActivity
     }
 
     @Override
-    public void onAddAttachments() {
-        messagesAdapter.addToStart(MessagesFixtures.getImageMessage(), true);
-    }
-
-    @Override
     public void onMessageLongClick(Message message) {
         AppUtils.showToast(this, R.string.on_log_click_message, false);
     }
@@ -66,17 +61,16 @@ public class CustomHolderMessagesActivity extends DemoMessagesActivity
                         R.layout.item_custom_incoming_text_message)
                 .setOutcomingTextConfig(
                         CustomOutcomingTextMessageViewHolder.class,
-                        R.layout.item_custom_outcoming_text_message)
-                .setIncomingImageConfig(
-                        CustomIncomingImageMessageViewHolder.class,
-                        R.layout.item_custom_incoming_image_message)
-                .setOutcomingImageConfig(
-                        CustomOutcomingImageMessageViewHolder.class,
-                        R.layout.item_custom_outcoming_image_message);
+                        R.layout.item_custom_outcoming_text_message);
 
         super.messagesAdapter = new MessagesListAdapter<>(super.senderId, holdersConfig, super.imageLoader);
         super.messagesAdapter.setOnMessageLongClickListener(this);
         super.messagesAdapter.setLoadMoreListener(this);
         messagesList.setAdapter(super.messagesAdapter);
+    }
+
+    @Override
+    public void onAddAttachments() {
+
     }
 }

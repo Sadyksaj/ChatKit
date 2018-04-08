@@ -10,22 +10,17 @@ import java.util.ArrayList;
 public class Dialog implements IDialog<Message> {
 
     private String id;
-    private String dialogPhoto;
     private String dialogName;
     private ArrayList<User> users;
     private Message lastMessage;
 
-    private int unreadCount;
-
-    public Dialog(String id, String name, String photo,
-                  ArrayList<User> users, Message lastMessage, int unreadCount) {
+    public Dialog(String id, String name,
+                  ArrayList<User> users, Message lastMessage) {
 
         this.id = id;
         this.dialogName = name;
-        this.dialogPhoto = photo;
         this.users = users;
         this.lastMessage = lastMessage;
-        this.unreadCount = unreadCount;
     }
 
     @Override
@@ -35,7 +30,7 @@ public class Dialog implements IDialog<Message> {
 
     @Override
     public String getDialogPhoto() {
-        return dialogPhoto;
+        return null;
     }
 
     @Override
@@ -60,10 +55,8 @@ public class Dialog implements IDialog<Message> {
 
     @Override
     public int getUnreadCount() {
-        return unreadCount;
+        return 0;
     }
 
-    public void setUnreadCount(int unreadCount) {
-        this.unreadCount = unreadCount;
-    }
+    public void setUnreadCount(int unreadCount) {}
 }
