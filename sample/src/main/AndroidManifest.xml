@@ -9,8 +9,8 @@
         android:theme="@style/GreenTheme">
 
         <activity
-            android:name=".features.main.MainActivity"
-            android:theme="@style/BlueThemeNoActionBar">
+            android:name=".features.demo.def.DefaultDialogsActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,9 +21,6 @@
 
         <activity
             android:name=".features.demo.def.DefaultMessagesActivity"
-            android:theme="@style/BlueTheme"/>
-        <activity
-            android:name=".features.demo.def.DefaultDialogsActivity"
             android:theme="@style/BlueTheme"/>
         <activity
             android:name=".features.demo.styled.StyledMessagesActivity"/>

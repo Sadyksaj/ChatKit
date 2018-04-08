@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    public void refreshFrames(){
+
+    }
+
+    public void refreshPeers(){}
     @Override
     public void onAction(int id) {
         switch (id) {

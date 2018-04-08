@@ -24,7 +24,8 @@
             android:gravity="center"
             android:text="@string/sample_title"
             android:textColor="@color/white"
-            android:textSize="28sp"/>
+            android:textSize="28sp"
+            android:typeface="normal" />
 
         <RelativeLayout
             android:layout_width="match_parent"
